@@ -291,10 +291,8 @@ qbittorrent
 #termite
 variety
 vlc
-### 221127
 # code
-ranger
-qutebrowser
+
 
 ###conky
 jq
