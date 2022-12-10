@@ -9,7 +9,7 @@
 # Website	:	https://www.arcolinuxforum.com
 ##################################################################################################################
 # @ToDo
-# personal moet gedaan voordat dit script in Home staat, misschien eerst testen of dat gebeurd is?
+# personal moet gedaan voordat dit script in ~/bin staat, misschien eerst testen of dat gebeurd is?
 
 
 set -e
@@ -26,14 +26,13 @@ echo "################################################################"
 
 
 echo "################################################################"
-echo "####             DOING THE PERSONAL STUFF                    ###"
+echo "####             DOING THE PERSONAL STUF                    ###"
 echo "################################################################"
-# wordt genegeerd 
-cp ~/bin/i3/config ~/.config/config
-cp ~/bin/i3/conky-i3statusbar ~/.config/conky-i3statusbar
+cp ~/bin/i3/config ~/.config/i3/config
+cp ~/bin/i3/conky-i3statusbar ~/.config/i3/conky-i3statusbar
 
 echo "################################################################"
-echo "###################    PERSONAL SYTUF DONE #####################"
+echo "###################    PERSONAL STUF DONE #####################"
 echo "################################################################"
 
 
