@@ -108,7 +108,9 @@ echo "####             WHAT TO DO NOW?                             ###"
 echo "################################################################"
 
 echo "Arch Linux Tweaktool:"
-echo "   - AUDIO naar Alsa & Pipewire - Pulseaudio eruit"
+echo "   - AUDIO -> Alsa & Pipewire - Pulseaudio exit"
 echo "   - SAMBA installeren"
-
+echo "Maybe..."
+echo "   - shortwave"
+echo "   - megasync (aur)"
 echo "################################################################"

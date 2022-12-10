@@ -215,8 +215,7 @@ bluez-utils
 #pulseaudio-bluetooth
 
 ###network
-### 221206
-#avahi
+avahi
 nss-mdns
 mobile-broadband-provider-info
 modemmanager
@@ -485,7 +484,7 @@ python-pyparted
 rate-mirrors-bin
 #scour
 #screenkey-git
-#sublime-text-4
+sublime-text-4
 #the_platinum_searcher-bin
 the_silver_searcher
 #trizen
@@ -919,7 +918,7 @@ xfce4-taskmanager
 
 #xfce4-panel-profiles
 
-###########################################################################
+###########################################################################agent
 #                                ISO SPECIFIC
 ###########################################################################
 polybar
@@ -931,6 +930,7 @@ autorandr
 hplip
 nm-connection-editor
 mkcert
+nomacs
 gpodder
 gnome-logs
 
