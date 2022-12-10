@@ -1,0 +1,27 @@
+bron: https://wiki.archlinux.org/title/Solid_state_drive
+
+# Test of de ssd TRIM ondersteunt
+lsblk --discard
+
+And check the values of DISC-GRAN (discard granularity) and DISC-MAX (discard max bytes) columns. Non-zero values indicate TRIM support. 
+
+# Enable weekly TRIM
+sudo systemctl enable fstrim.timer
+
+# Na run wordt dit bestand vernieuwd als timestamp:
+/var/lib/systemd/timers/stamp-fstrim.timer
+
+
+
+##############################
+# Test of TRIM werkt?
+sudo journalctl | grep trim
+
+-- na enable -->
+
+grep trim
+jan 25 08:35:53 tha dbus-daemon[788]: [system] Activating via systemd: service name='org.freedesktop.home1' unit='dbus-org.freedesktop.home1.service' requested by ':1.97' (uid=0 pid=14620 comm="sudo systemctl start fstrim.timer ")
+jan 25 08:35:53 tha sudo[14620]:       th : TTY=pts/0 ; PWD=/home/th ; USER=root ; COMMAND=/usr/bin/systemctl start fstrim.timer
+
+---
+

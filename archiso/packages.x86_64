@@ -4,6 +4,7 @@
 
 ###archiso
 alsa-utils
+### 221129 - installatie loopt vast als ik deze uitcomment
 amd-ucode
 arch-install-scripts
 #archinstall
@@ -13,17 +14,19 @@ bind
 #brltty
 broadcom-wl-dkms
 btrfs-progs
+### 221127 - proberen of deze achter een # kan
 clonezilla
 #cloud-init
 #crda
-cryptsetup
+### 221128 v2
+#cryptsetup
 #darkhttpd
 ddrescue
 dhclient
 #dhcpcd
 diffutils
 dmidecode
-dmraid
+#dmraid
 dnsmasq
 dosfstools
 e2fsprogs
@@ -58,10 +61,14 @@ libusb-compat
 linux
 linux-atm
 linux-firmware
-linux-firmware-qlogic
-linux-firmware-marvell
+# Onderstaande 2 uitzoeken / testen - lijkt prima misbaar te zijn
+### 221128 v2
+#linux-firmware-qlogic
+### 221128 v2
+#linux-firmware-marvell
 #livecd-sounds
-lsscsi
+### 221128 v2
+#lsscsi
 lvm2
 #lynx
 man-db
@@ -74,7 +81,7 @@ mkinitcpio-archiso
 mkinitcpio-nfs-utils
 modemmanager
 mtools
-nano
+# nano
 nbd
 ndisc6
 nfs-utils
@@ -86,7 +93,8 @@ open-iscsi
 open-vm-tools
 openconnect
 openssh
-openvpn
+### 2211298 v2
+#openvpn
 partclone
 parted
 partimage
@@ -94,7 +102,6 @@ pcsclite
 ppp
 pptpclient
 pv
-qemu-guest-agent
 refind
 reflector
 reiserfsprogs
@@ -121,7 +128,8 @@ usbmuxd
 usbutils
 vim
 #virtualbox-guest-utils-nox
-vpnc
+### 221129 
+#vpnc
 wireless-regdb
 wireless_tools
 wpa_supplicant
@@ -130,14 +138,14 @@ xfsprogs
 xl2tpd
 
 ###archiso-extra
-aic94xx-firmware
+# aic94xx-firmware
 dialog
 dnsutils
 linux-headers
 logrotate
 ntp
 upd72020x-fw
-wd719x-firmware
+# wd719x-firmware
 wget
 
 ###xorg
@@ -146,38 +154,40 @@ xorg-apps
 xorg-xinit
 
 ###video
-xf86-input-elographics
+#xf86-input-elographics
 xf86-input-evdev
 xf86-input-libinput
 xf86-input-vmmouse
 xf86-input-void
-xf86-video-amdgpu
-xf86-video-ati
+#f86-video-amdgpu
+#xf86-video-ati
 xf86-video-fbdev
-#xf86-video-intel
-xf86-video-nouveau
+xf86-video-intel
+#xf86-video-nouveau
 xf86-video-openchrome
-xf86-video-vesa
-xf86-video-vmware
+#xf86-video-vesa
+#xf86-video-vmware
 mesa
 
 ###hardware video support
-nvidia-dkms
-nvidia-utils
-nvidia-settings
+#nvidia-dkms
+#nvidia-utils
+#nvidia-settings
 mesa-utils
 
-###base-devel
+###base and base-devel
+base
 base-devel
 
 ###virtual box or vmware
-virtualbox-guest-utils
+# virtualbox-guest-utils
 
 ###packages for dual boot
-os-prober
+# os-prober
 
-###LUKS encryption
-cryptsetup
+### 221201
+###LUKS encryptionpa
+#cryptsetup
 
 ###audio
 alsa-firmware
@@ -191,8 +201,9 @@ gst-plugins-good
 gst-plugins-ugly
 gstreamer
 libdvdcss
-pulseaudio
-pulseaudio-alsa
+### 221202 - pulseaudio kan weg, wordt Pipewire en Alsa
+#pulseaudio
+#pulseaudio-alsa
 pavucontrol
 
 ###bluetooth
@@ -200,10 +211,12 @@ blueberry
 bluez
 bluez-libs
 bluez-utils
-pulseaudio-bluetooth
+### 221202 - pulseaudio kan weg, wordt Pipewire en Alsa
+#pulseaudio-bluetooth
 
 ###network
-avahi
+### 221206
+#avahi
 nss-mdns
 mobile-broadband-provider-info
 modemmanager
@@ -253,36 +266,39 @@ poppler-qt5
 #chromium
 #darktable
 #deadbeef
-dmenu
+### 221128 v2
+#dmenu
 #evolution
 feh
 firefox
 #flashplugin
 #galculator
 #geany
-#gimp
+gimp
 #gmrun
 #gsimplecal
 #guvcview
-imagemagick
 #inkscape
-#libreoffice-fresh
-#lshw
-#meld
-#micro
+libreoffice-fresh
+lshw
+meld
 nitrogen
 numlockx
-#pragha
-#qbittorrent
-scrot
+pragha
+qbittorrent
+# scrot
 #simplescreenrecorder
 #termite
 variety
-#vlc
+vlc
+### 221127
+# code
+ranger
+qutebrowser
 
 ###conky
 jq
-#lm_sensors
+lm_sensors
 
 ###cursors
 #xcursor-simpleandsoft
@@ -297,9 +313,9 @@ ttf-droid
 ttf-hack
 #ttf-inconsolata
 #ttf-liberation
-ttf-roboto
-ttf-roboto-mono
-ttf-ubuntu-font-family
+#ttf-roboto
+#ttf-roboto-mono
+#ttf-ubuntu-font-family
 
 ###icons
 #arc-icon-theme
@@ -310,16 +326,16 @@ ttf-ubuntu-font-family
 #adapta-gtk-theme
 arc-gtk-theme
 arc-darkest-theme-git
-kvantum
+# kvantum
 #openbox-arc-git
 
 ###utilities
 arandr
 asciinema
 bash-completion
-#baobab
+baobab
 bat
-#catfish
+catfish
 #cronie
 dconf-editor
 dex
@@ -328,8 +344,9 @@ duf-bin
 edid-decode-git
 #evince
 expac
-file-roller
-#filezilla
+### 221201 - compressie app
+# file-roller
+# filezilla
 git
 gksu
 #glances
@@ -342,7 +359,7 @@ gparted
 #gpick
 #gtop
 hardinfo-gtk3
-#hddtemp
+hddtemp
 htop
 #hunspell
 #hunspell-en_US
@@ -354,11 +371,11 @@ intltool
 iw
 jsoncpp
 libmtp
-laptop-detect
 lsb-release
 mlocate
-#nomacs
-oh-my-zsh-git
+nomacs
+### 221206
+#oh-my-zsh-git
 p7zip
 pkgfile
 #plank
@@ -368,40 +385,42 @@ polkit-gnome
 #python2-dbus
 #python2-xdg
 #qt4
-qt5ct
+### 221128
+#qt5ct
 #qt5-styleplugins
 #qt5-tools
 #qt5-webkit
 #powertop
 ripgrep
-rofi
+### 221128
+#rofi
 rxvt-unicode
-#simple-scan
+simple-scan
 #shotwell
 speedtest-cli-git
-#telegram-desktop
+telegram-desktop
 #timeshift
-tlp
 #tree
 #ufw
-#gufw
+gufw
 unace
 unrar
 unzip
 #vnstat
 w3m
-webkit2gtk
+### 221128 v2
+# webkit2gtk
 wmctrl
 xapp
 xdo
 xdotool
 xdg-desktop-portal-gtk
 #yt-dlp
-#youtube-dl
+youtube-dl
 zenity
-zsh
-zsh-completions
-zsh-syntax-highlighting
+# zsh
+# zsh-completions
+# zsh-syntax-highlighting
 
 ###########################################################################
 #                           ARCOLINUX_REPOS
@@ -444,7 +463,7 @@ surfn-icons-git
 mkinitcpio-openswap
 
 ###utilities-repo
-alacritty
+# alacritty
 appstream
 archiso
 conky-lua-archers
@@ -460,7 +479,7 @@ neofetch
 #numix-gtk-theme-git
 arcolinux-pamac-all
 #pamac-aur
-paru-bin
+#paru-bin
 #peek
 #pulseaudio-equalizer-ladspa
 python-pyparted
@@ -478,12 +497,13 @@ urxvt-resize-font-git
 #wttr
 yad
 #yakuake
-yay-bin
+#yay-bin
 
 ###########################################################################
 #                               GAMES
 ###########################################################################
 
+#arcolinux-meta-steam
 #lutris
 #sauerbraten
 #xonotic
@@ -492,8 +512,9 @@ yay-bin
 #                           ARCOLINUX FOLDER
 ###########################################################################
 
-arcolinux-alacritty-git
-arcolinux-arc-kde
+# arcolinux-alacritty-git
+### 221128 waarom was die aan?
+# arcolinux-arc-kde
 arcolinux-bin-git
 #arcolinux-candy-beauty-git
 #arcolinux-common-git
@@ -513,9 +534,8 @@ arcolinux-gtk3-sardi-arc-git
 #arcolinux-gtk3-surfn-plasma-dark-git
 #arcolinux-guake-autostart-git
 arcolinux-hblock-git
-#arcolinux-hyprland-profile-git
 arcolinux-keyring
-arcolinux-kvantum-git
+#arcolinux-kvantum-git
 #arcolinux-kvantum-lxqt-git
 #arcolinux-kvantum-plasma-git
 arcolinux-local-applications-git
@@ -543,10 +563,11 @@ arcolinux-pipemenus-git
 #arcolinux-plank-themes-git
 #arcolinux-plasma-kservices-git
 arcolinux-polybar-git
-arcolinux-qt5-git
+### 221128 gevaarlijk misschien?
+#arcolinux-qt5-git
 #arcolinux-qt5-plasma-git
-arcolinux-rofi-git
-arcolinux-rofi-themes-git
+#arcolinux-rofi-git
+#arcolinux-rofi-themes-git
 arcolinux-root-git
 #arcolinux-slim
 #arcolinux-slimlock-themes-git
@@ -555,7 +576,6 @@ arcolinux-system-config-git
 #arcolinuxd-system-config-git
 arcolinux-systemd-services-git
 #arcolinux-systemd-services-dev-git
-#arcolinux-sway-profile-git
 #arcolinux-termite-themes-git
 #arcolinux-tint2-git
 #arcolinux-tint2-themes-git
@@ -565,10 +585,10 @@ arcolinux-variety-autostart-git
 arcolinux-volumeicon-git
 arcolinux-wallpapers-git
 #arcolinux-wallpapers-dual-git
-#arcolinux-wayland-profile-git
 #arcolinux-xfce-panel-profiles-git
 #arcolinux-xmobar-git
-arcolinux-zsh-git
+### 221128
+#arcolinux-zsh-git
 
 ###########################################################################
 #                           ARCOLINUX DESKTOP FOLDER
@@ -589,8 +609,6 @@ arcolinux-zsh-git
 #arcolinux-fvwm3-git
 #arcolinux-gnome-git
 #arcolinux-herbstluftwm-git
-#arcolinux-hypr-git
-#arcolinux-hyprland-git
 arcolinux-i3wm-git
 #arcolinux-icewm-git
 #arcolinux-jwm-git
@@ -605,7 +623,6 @@ arcolinux-i3wm-git
 #arcolinux-plasma-nemesis-git
 #arcolinux-qtile-git
 #arcolinux-spectrwm-git
-#arcolinux-sway-git
 #arcolinux-ukui-git
 #arcolinux-worm-git
 #arcolinux-wmderland-git
@@ -617,7 +634,7 @@ arcolinux-xfce-git
 #                           ARCOLINUX CONFIG FOLDER
 ###########################################################################
 
-arcolinux-config-all-desktops-git
+#arcolinux-config-all-desktops-git
 #arcolinux-config-awesome-git
 #arcolinux-config-berry-git
 #arcolinux-config-bspwm-git
@@ -632,7 +649,7 @@ arcolinux-config-all-desktops-git
 #arcolinux-config-git
 #arcolinux-config-gnome-git
 #arcolinux-config-herbstluftwm-git
-#arcolinux-config-i3wm-git
+arcolinux-config-i3wm-git
 #arcolinux-config-icewm-git
 #arcolinux-config-jwm-git
 #arcolinux-config-kodi-git
@@ -655,7 +672,7 @@ arcolinux-config-all-desktops-git
 #                           ARCOLINUX DCONF FOLDER
 ###########################################################################
 
-arcolinux-dconf-all-desktops-git
+#arcolinux-dconf-all-desktops-git
 #arcolinux-awesome-dconf-git
 #arcolinux-berry-dconf-git
 #arcolinux-bspwm-dconf-git
@@ -670,7 +687,7 @@ arcolinux-dconf-all-desktops-git
 #arcolinux-fvwm3-dconf-git
 #arcolinux-gnome-dconf-git
 #arcolinux-herbstluftwm-dconf-git
-#arcolinux-i3wm-dconf-git
+arcolinux-i3wm-dconf-git
 #arcolinux-icewm-dconf-git
 #arcolinux-jwm-dconf-git
 #arcolinux-kodi-dconf-git
@@ -697,7 +714,6 @@ arco-calamares
 #arco-calamares-dev
 #arco-calamares-git
 #arco-calamares-next
-#arco-calamares-wayland
 arcolinux-system-installation-git
 #arcolinux-system-installation-dev-git
 #arcolinuxd-config-live-session-git
@@ -739,18 +755,14 @@ adobe-source-han-sans-cn-fonts
 #arcob-calamares-config-bspwm-git
 #arcob-calamares-config-budgie-git
 #arcob-calamares-config-cinnamon-git
-#arcob-calamares-config-chadwm-git
 #arcob-calamares-config-cwm-git
 #arcob-calamares-config-cutefish-git
 #arcob-calamares-config-deepin-git
 #arcob-calamares-config-dwm-git
 #arcob-calamares-config-enlightenment-git
-#arcob-calamares-config-everyway-git
 #arcob-calamares-config-fvwm3-git
 #arcob-calamares-config-gnome-git
 #arcob-calamares-config-herbstluftwm-git
-#arcob-calamares-config-hypr-git
-#arcob-calamares-config-hyprland-git
 arcob-calamares-config-i3-git
 #arcob-calamares-config-icewm-git
 #arcob-calamares-config-jwm-git
@@ -759,11 +771,9 @@ arcob-calamares-config-i3-git
 #arcob-calamares-config-lxqt-git
 #arcob-calamares-config-mate-git
 #arcob-calamares-config-openbox-git
-#arcob-calamares-config-pantheon-git
 #arcob-calamares-config-plasma-git
 #arcob-calamares-config-qtile-git
 #arcob-calamares-config-spectrwm-git
-#arcob-calamares-config-sway-git
 #arcob-calamares-config-ukui-git
 #arcob-calamares-config-worm-git
 #arcob-calamares-config-wmderland-git
@@ -856,14 +866,16 @@ thunar
 thunar-volman
 tumbler
 xfce4-appfinder
-xfce4-panel
+### 221128 v3
+#xfce4-panel
 xfce4-power-manager
 #xfce4-session
 xfce4-settings
-xfce4-terminal
+#xfce4-terminal
 xfconf
 #xfdesktop
-xfwm4
+###221203
+#xfwm4
 #xfwm4-themes
 
 ### xfce4-goodies group content
@@ -871,7 +883,7 @@ xfwm4
 #mousepad
 #orage
 #parole
-ristretto
+# ristretto
 thunar-archive-plugin
 thunar-media-tags-plugin
 #xfburn
@@ -894,8 +906,8 @@ thunar-media-tags-plugin
 xfce4-notifyd
 #xfce4-pulseaudio-plugin
 #xfce4-screensaver
-xfce4-screenshooter
-#xfce4-sensors-plugin
+#xfce4-screenshooter
+xfce4-sensors-plugin
 #xfce4-smartbookmark-plugin
 #xfce4-systemload-plugin
 xfce4-taskmanager
@@ -914,3 +926,39 @@ xfce4-taskmanager
 ###########################################################################
 polybar
 autorandr
+
+###########################################################################
+#                                ADDED
+###########################################################################
+hplip
+nm-connection-editor
+mkcert
+gpodder
+gnome-logs
+
+### 221127
+ranger
+qutebrowser
+
+### 221204
+arch-audit
+qjournalctl
+docker
+docker-compose
+visual-studio-code-bin
+
+### 221204
+stacer
+
+### 221202 - pulseaudio kan weg, wordt Pipewire en Alsa
+#pulseaudio-equalizer
+ventoy-bin
+
+### Alleen voor in de virtual machine test !!!
+qemu-guest-agent
+
+###########################################################################
+#                                MAYBE
+###########################################################################
+
+#gnome-boxes

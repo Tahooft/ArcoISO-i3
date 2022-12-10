@@ -1,0 +1,6 @@
+# Intro: https://www.youtube.com/watch?v=JiQmpA474BY
+
+In Code install: Markdown Preview Mermaid Support  
+
+# Live coding
+https://mermaid.live/

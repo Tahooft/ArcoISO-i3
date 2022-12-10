@@ -1,0 +1,272 @@
+﻿round## I want to be able to do the following:
+    1. create a local branch based on some other (remote or local) branch (via git branch or git checkout -b)
+    2. Push the local branch to the remote repository (publish), but make it trackable so git pull and git push will work immediately.
+    
+Reply:
+
+git checkout -b <branch>    # -b optie to create the branch
+Edit files, add and commit. Then push with the -u (short for --set-upstream) option:
+git push -u origin <branch>
+
+## Merge
+git checkout master	# basis voot de merge
+git merge hotfix		# merge hotfix on master	
+	hierna een pull en push !
+
+## Delete local
+git branch -d hotfix
+
+## Delete remote
+git push origin -–delete hotfix
+
+git branch -a     # list all branches
+
+git diff 	# de wijzigingen sinds de laatste commit
+
+git log	# overzicht van alle commits
+Regelmatig
+Bestaande repository clonen
+# Fysieke plek voor de clone voorbereiden
+mkdir Sites
+cd Sites/
+mkdir devDesktop
+cd devDesktop/
+# De clone binnenhalen
+git clone https://tacotom@bitbucket.org/atomgroup/vat-portal.git
+
+composer install   
+ 
+Database import
+# Eventueel PATH bijwerken
+PATH="/Applications/DevDesktop/$PHP_ID/bin:/Applications/DevDesktop/mysql/bin:/Applications/DevDesktop/tools:$PATH" && cd "/Users/taco/Sites/devDesktop/vat-portal"
+#rsyncen - n.b. je start een sessie op andere server
+drush @site.test ssh
+# Bestand binnenhalen
+drush rsync @site.test:dump-11122017-live.sql .
+# Drop oude db en importeer nieuwe db
+drush sql-drop -y
+drush sqlc < dump-11122017-live.sql 
+of 
+drush sql-cli < ../build/db/clean-install.sql
+
+# Site toevoegen aan de Acquia server 
+Met het  plusje toevoegen in de Acquia server 
+
+Configuratie import (Normaal eerst een Composer install als geen Git clone)
+drush cim sync -y
+drush updb -y
+drush cr
+
+
+Logins in Drupal
+# Opent browser met Inloglink voor Admin
+drush uli
+# Genereert link voor user 1234
+drush uli 1234 --no-browser --uri=http://vat-portal.dd:8083/
+
+
+Modules installeren met: 
+composer require drupal/<module naam>
+composer en <module naam>
+
+Voorbeeld sprint verloop
+ (git fetch && git checkout feature/GRGDD-31-als-beheerder-wil-ik-het-hoofdm)
+# Haal een sprint van BitBucket: https://atomgroup.atlassian.net/secure/RapidBoard.jspa
+Create branch rechtsonder klikken
+Vakjes goed zetten
+Voor branch name moet feature/ staan: 
+
+# Bij de pull in de naam opgeven wat de feature/functionaliteit wordt
+git fetch && git checkout feature/FVP-1013-bepaalde-velden-op-legal-entity             
+# -> Code aangepast en klaar voor comit:
+
+# Even kijken welke bestanden actief zijn
+git status 		
+git add  modules/custom/vatapp/vatapp.routing.yml
+git status
+# Voeg gitnr (bijvoorbeeld FVP-1040) toe bij je commit comment
+git commit -m 'FVP-1040:clients nu ook calendar rechten'
+git push origin branchnaam
+
+Na elke checkout van branch een cim doen!
+dr
+sta
+schone fetch
+git fetch && git checkout develop
+
+
+Bij het aanmaken van een nieuwe branch de tekst "feature/" zetten voor de branchnaam.
+Bij een commit met -m NIET die tekst  "feature/" plaatsen.
+
+
+Handmatig branch checkout
+    1 git checkout develop
+    2 drush sql-drop (zorg dat je in de Web directory staat)
+    3 drush sqlc < ../build/db/clean-install.sql
+    4 git pull
+    5 git branch feature/GRGDD-5
+    6 git checkout feature/GRGDD-5
+    7 composer install
+    8 drush cim sync -y
+    9 drush updb -y
+    10 drush cr
+    11 
+    12 drush sql-dump local.sql ???
+    13 
+    14 composer require <module>
+    15 drush en <module> (is verandering in db)
+    16 module klik klik of coderen
+    17 drush cex sync -y
+    18 git status (kijik wat je wil toevoegen)
+    19 git add <..>
+    20 git commit -m "nnnn"
+    21 git status
+    22 git push (git push --set-upstream origin feature/GRGDD-5)
+    23 pull request in BitBucket
+    24 
+
+Git lijstje
+git add .				add alle bestanden
+git add <dir>				add dir
+git remote -v				git remote connecties naam en url 
+git branch --list			toont branches
+git log --oneline			log met revision id's
+
+git fetch <remote>			fetch all branches als remote
+git fetch <remote> <branch>		fetch branche als remote
+git merge <origin>/<current-branch>	
+
+git pull <remote>			fetch <remote> en meteen merge
+
+git push <remote>			schrijf local repository commit naar remote repo
+
+# git checkout is een manier om een snapshot terug te zetten
+git checkout rev-id			working directory wordt gelijk aan rev-id commit
+git checkout ref-id filename		zet filename terug
+
+Pull request via Bitbucket 		 hiermee vraag je anderen om jouw branch te pull
+
+Revert
+git revert <commit>	genereert een nieuwe commit waarmee je de aanpassingen van die opgegeven <commit> weer ongedaan kan maken (niet verwarren met git reset)
+
+Nog uitwerken
+git reset --hard HEAD
+ /Applications/DevDesktop/Acquia\ Dev\ Desktop.app/Contents/MacOS/datamodel.xml
+
+Wisselen van branch
+git branch --list
+git status
+git stash					Opruimen van de working directory
+git stash drop					Opruimen van de working directory
+git checkout feature/GRGDD-19-als-beheerder-wil-ik-dat-er-een
+git status
+git pull
+git fetch origin develop
+git merge FETCH_HEAD
+pwd 						zit ik in de juiste map voor Drush?
+drush cim sync -y
+
+Problemen
+Als je bij een cim errors tegenkomt moeten die eerst opgelost. Bijvoorbeeld de cim herhalen ruimt blijkbaar rotzooi op. Als de cim foutloos geworden is doe je een cex van de schone toestand die je dan kan committen en pushen.
+
+
+Eenmalige opzet
+Aanmaken public key
+# Na het ophalen van een secure key op by Bitbucket
+# Kopieer bestand naar clipboard
+pbcopy < ~/.ssh/id_rsa.pub
+
+GIT  configuratie opzet
+# https://git-scm.com/book/tr/v2/Customizing-Git-Git-Configuration
+git config --global --edit
+git config --global user.name "Taco Hooft"
+git config --global user.email taco@atom.nl
+
+
+
+# In PHP-storm (bv) de settings.local.php aanmaken en vullen met: 
+==================================>
+
+<?php
+ini_set('memory_limit', '4050M');
+ini_set('max_execution_time', 1200);
+assert_options(ASSERT_ACTIVE, TRUE);
+\Drupal\Component\Assertion\Handle::register();
+$settings['hash_salt'] = '26TSCh95wx1sjq-tg9GuzQAK7JKsTMFaB4e8Kz2IzDoSxFCF1Ct_IQCI2F6kH8g2rkd2L4rauQ';
+$settings['container_yamls'][] = DRUPAL_ROOT . '/sites/development.services.yml';
+$settings['cache']['bins']['render'] = 'cache.backend.null';
+$settings['cache']['bins']['dynamic_page_cache'] = 'cache.backend.null';
+$settings['extension_discovery_scan_tests'] = FALSE;
+$settings['rebuild_access'] = TRUE;
+$settings['skip_permissions_hardening'] = TRUE;
+$config['system.logging']['error_level'] = 'verbose';
+$config['system.performance']['css']['preprocess'] = FALSE;
+$config['system.performance']['js']['preprocess'] = FALSE;
+$config['reroute_email.settings']['reroute_email_enable'] = TRUE;
+$config['reroute_email.settings']['reroute_email_enable_message'] = 1;
+$config['reroute_email.settings']['reroute_email_address'] = 'mellissa+vatportal@atom.nl';
+$config['google_analytics.settings']['account'] = 'UA-XXXXXXX-XX';
+// <DDSETTINGS>
+// Please don't edit anything between <DDSETTINGS> tags.
+// This section is autogenerated by Acquia Dev Desktop.
+if (isset($_SERVER['DEVDESKTOP_DRUPAL_SETTINGS_DIR']) && file_exists($_SERVER['DEVDESKTOP_DRUPAL_SETTINGS_DIR'] . '/loc_vat_portal_dd.inc')) {
+  require $_SERVER['DEVDESKTOP_DRUPAL_SETTINGS_DIR'] . '/loc_vat_portal_dd.inc';
+}
+// </DDSETTINGS>
+
+⇐=================================
+
+ssh mediagrip@dev.mediagrip.nl   (atom atom)
+cd /var/www/test.rotterdam-griffie/
+
+
+
+
+Uitzoeken hoe we dit willen doen:
+
+
+ Benodigde permissies in kaart brengen en assignen aan de juiste rollen. Tevens hier de onveranderlijke menu's en menu links in kaart brengen -zijn die er?
+
+
+
+ Andere oplossing?
+
+
+Vaste menu items volgens wireframe Kees
+
+Hoofdmenu
+Raad en Commissies
+College & Gemeente
+Stad en Media
+Naslag
+
+Profiel Bewerken
+Uitloggen
+
+Rollen op basis document Herbouw Raadsledendashboard
+
+fractiemedewerker (filterfunctie)
+
+Commisie
+voorzitter
+griffier
+secretari
+raadslid
+burgerlid
+					
+				
+			
+		
+	
+KLAD
+
+niels [3:59 PM] 
+@Taco Hooft Om te zorgen dat blokken van custom block types worden aangemaakt kun je https://www.drupal.org/project/default_content gebruiken (@Klaas-Jan en @edwin_atom heben hier ervaring mee). Zelf heb ik https://www.drupal.org/project/recreate_block_content gebruikt die zorgt dat er een (of meerdere) instanties van het custom block type worden aangemaakt, maar waarbij de velden in het blok geen waarden krijgen (in mijn geval wordt dit door content-beheerders gedaan).
+Drupal.org
+Default Content for D8
+Overview Default content gives your module and install profile a way to ship default content as well as configuration. Powered by core's serialization, rest and hal modules. Features Supports entity-references between content. Supports files if you have File entity Easily export your content and its dependencies to yml using drush commands. How does it work How does it work
+Oct 2nd, 2015 at 2:40 AM
+ Drupal.org
+Recreate Block Content
+This module recreates the Block Content for a exported Custom Block. It doesn't exports the content, the block is created as a placeholder, with no content. Just enable the module and thats it, the blocks are recreated on cache clear, so a drush cr will recreate the blocks if they don't exists.
+ 

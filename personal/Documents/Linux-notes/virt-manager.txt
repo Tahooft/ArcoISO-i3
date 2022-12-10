@@ -1,0 +1,46 @@
+# Install in Manjaro
+Volgens: https://wiki.manjaro.org/index.php/Virt-manager
+sudo pacman -S virt-manager qemu vde2 ebtables dnsmasq bridge-utils openbsd-netcat
+
+# libvirt wordt mee geinstalleerd en dan:
+
+
+sudo systemctl start libvirtd.service
+
+# (? als nodig ?) add user th to libvirtd group (https://www.youtube.com/watch?v=p1d_b_91YlU)
+sudo usermod -G libvirtd -a th       
+
+make a bridge...?
+
+# Default network
+Testen op aanwezig:
+sudo virsh net-list --all
+
+Resultaat -> 
+ Name      State      Autostart   Persistent
+----------------------------------------------
+ default   inactive   no          yes
+
+sudo virsh net-start default
+sudo virsh net-autostart --network default
+
+# Install guest additions
+Once the VM is started and running you have to install the guest spice tools.
+- For Windows is a single package: spice-guest-tools-xxxx.exe te vinden op:
+    https://aur.archlinux.org/packages/spice-guest-tools-windows
+
+- For linux are: spice-vdagent and xf86-video-qxl.
+
+If you're going to install Windows, prepare the Virtio driver image too. (https://wiki.manjaro.org/index.php/Virt-manager)
+# instructies en download:
+https://linuxhint.com/install_virtio_drivers_kvm_qemu_windows_vm
+https://github.com/virtio-win/virtio-win-pkg-scripts/blob/master/README.md
+
+
+
+set videoQXL op virtio  uitproberen
+
+# Aanpassen default opslag locatie virtmachine
+https://ostechnix.com/how-to-change-kvm-libvirt-default-storage-pool-location/
+
+\\10.0.2.4\qemu

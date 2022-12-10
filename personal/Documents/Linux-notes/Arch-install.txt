@@ -1,0 +1,86 @@
+Installatie Arch Linux
+
+Een Arch opzet met 3 partities
+
+fdisk -l		list aanwezige devices (alleen /dev/sda 8GIB in virtbox
+
+Maak de primary en partitie aan
+fdisk /dev/sda		start fdisk op hrt device
+n			nieuw
+p			primary
+Partition numer 1
+First sector default (2084)
+last sector	+3G
+
+Tweede primary
+n
+Partition numer
+First sector	 	overslaan met enter
+Last sector 		+1G
+
+Swap
+t			type 
+Partition number 2	default 2 met enter
+L			lijst met types
+Kies Linux swap / Solaris (82)
+
+Laatste schijf
+n
+p
+3
+
+
+
+### Security 
+# Enforce a delay after a failed login attempt
+
+Add the following line to /etc/pam.d/system-login to add a delay of at least 4 seconds between failed login attempts:
+
+/etc/pam.d/system-login
+
+auth optional pam_faildelay.so delay=4000000pacman -S intel-ucode 
+
+# Install microcode
+pacman -S intel-ucode
+a		voeg boot toe
+1		/dev/sda1 
+
+Write
+w			Write
+
+mkfs.ext4 /dev/sda1
+mkfs.ext4 /dev/sda3
+mkswap /dev/sda2
+swapon /dev/sda2
+
+Mount
+mount /dev/sda1 /mnt
+mkdir /mnt/hone
+mount /dev/sda3 /mnt/home
+(ls /mnt om even te kijken)
+
+
+pactsrap /mnt base
+
+genfstab /mnt >> /mnt/etc/fstab
+(cat /mnt/etc/fstab om te kijken)
+
+arch-chroot /mnt
+passwd		stel wachtwoord in
+
+
+vi /etc/locale.gen	en_US.UTF-8 UTF-8 uncommenten
+locale-gen		doorvoeren
+
+# vi /etc/vconsole.con als je de keyboard settings wil aanpassen. Default is En/US dus never mind
+
+vi /etc/hostmame	geef een naam aan je systeem
+vi /etc/hosts	voeg je systeem naam toe met 127.0.1.1
+Grub bootloader
+pacman -S grub-bios
+grub-install /dev/sda
+mkinitcpio -p grub	negeer Error: Failed to load 
+grub-mkconfig -o  /boot/grub/grub.cfg
+exit			verlaat chroot
+reboot
+

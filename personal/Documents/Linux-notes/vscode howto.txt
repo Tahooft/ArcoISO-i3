@@ -1,0 +1,59 @@
+Command Palette (Ctrl+Shift+P) 
+    python select interpreter
+Trailing spaces kan aangepast in de settings (Text Editor -> Files -> Trim triling whitespace)
+
+
+# command pallet 
+Ctl p 
+    >       access commands 
+    @       list symbols in code
+
+
+ctl ^ .     quick overview code
+
+ctl d       multi line editing 
+alt click   multiple cursors
+
+alt arrow   move selected line up or down (werkt niet...?)
+alt ^arrow  copy slected line up or down
+
+Ctl k       keycodes
+Ctl ,       Open settings
+Ctl space   code hints
+ctl ^ i     format document
+ctl ks      keyboard shortcuts
+alt arrow    move line up or down
+^alt arrow  add cursor(s) above/below section
+^alt i      add cursor to line ends
+ctl k z      zen
+
+
+
+
+
+command (typ im of sort)
+    sort  - imports
+    
+# code runner
+ctl alt n   run file    
+in settings.json moet:
+    , (einde vorige sectie)
+    "code-runner.executorMap": {
+        python": "$pythonPath -u $fullFileName",
+    },
+    "code-runner.clearPreviousOutput": false,
+    "code-runner.showExecutionMessage": true
+
+$HOME/.config/Code/User/settings.json
+The workspace setting file is located under the .vscode folder in your root folder.
+All keyboard shortcuts in VS Code can be customized via the keybindings.json file.
+To configure keyboard shortcuts the way you want, open Keyboard Shortcuts editor and click on the link keybindings.json.
+
+
+
+#VSCode
+$HOME/.config/Code/User/settings.json
+live server of php server extentie
+
+# Add gthub repo's to vscode
+ctl-p >git   add repo

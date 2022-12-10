@@ -1,0 +1,19 @@
+Source: https://wiki.archlinux.org/index.php/QEMU#Sharing_data_between_host_and_guest
+
+## In host  
+mkdir /home/th/Shared
+sudo chown libvirt-qemu /home/th/Shared
+
+
+
+## In Virtual Machine Manager  config
+<filesystem type="mount" accessmode="squash">
+  <source dir="/home/th/Shared"/>
+  <target dir="/home/th/Shared"/>
+  <alias name="fs0"/>
+  <address type="pci" domain="0x0000" bus="0x07" slot="0x00" function="0x0"/>
+</filesystem>
+
+## In Guest
+ sudo mount -t 9p -o trans=virtio,version=9p2000.L /home/th/Shared  /home/th/Shared
+

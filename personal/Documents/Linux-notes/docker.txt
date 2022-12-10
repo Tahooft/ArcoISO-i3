@@ -1,0 +1,88 @@
+# docker commands moeten als sudo !!!
+
+# Inleiding
+# Na instalatie add user to docker group: sudo usermod -aG docker th
+# of: sudo usermod -aG docker $USER
+# Docker run <IMAGE ID> starts (runs) from an image
+docker run -d ubuntu bash -c "shuf -i 1-10000 -n 1 -o /data.txt && tail -f /dev/null"
+docker run -dp 3000:3000 getting-started
+
+# docker start <CONTAINER ID> starts a container
+Starts the container with the parameters you gave at the initial docker run
+
+# build container
+docker build -t getting-started .
+
+# Let's start a new container using the updated code.
+docker run -dp 3000:3000 getting-started
+
+# Removing a container using the CLI
+#   Get the ID of the container by using the docker ps command.
+docker ps
+#Use the docker stop command to stop the container.
+# (Swap out <the-container-id> with the ID from docker ps)
+docker stop <the-container-id>
+#Once the container has stopped, you can remove it by using the docker rm command.
+docker rm <the-container-id>
+
+# Start een container
+docker exec  <the-container-id>
+
+FLAGS
+-d  detached
+-p  portmapping
+
+
+# Run a container
+docker run -dp 3000:3000 getting-started
+
+# docker ps
+List all containers running on the host for deletion:
+
+# docker ps -a
+Stop a running container:
+
+# docker stop <CONTAINER ID>
+Killing still running containers:
+
+# docker kill <CONTAINER ID>
+Delete containers listed by ID:
+
+# docker images
+List all Docker images:
+
+# docker rm <CONTAINER ID>
+Delete images by ID:
+
+# docker rmi <IMAGE ID>
+Delete all images, containers, volumes, and networks that are not associated with a container (dangling):
+
+# docker system prune
+To additionally remove any stopped containers and all unused images (not just dangling ones), add the -a flag to the command:
+# docker system prune -a
+
+Delete all Docker data (purge directory):
+# rm -R /var/lib/docker
+
+
+# To grab the IP address of a running container:$
+ docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' <container-name OR id> $
+ 
+For each running container, the name and corresponding IP address can be listed for use in /etc/hosts:$
+
+docker-machine ip MACHINE_VM to get the machine address, and then open http://MACHINE_VM_IP:8000 in a web browser
+
+# Maak een terminal verbinding met een container
+docker exec -it <CONTAINER ID> /bin/bash
+
+# List networks
+docker network ls
+
+### DOCKER-COMPOSE ###
+## Samples
+# https://docs.docker.com/samples/wordpress/
+# https://gist.github.com/AliKhadivi/37c56efdfe56ebe717d7990ca789383b (Wordpress en phpMyAdmin)
+
+Selecteer een projectdir en creeer: docker-compose.yml
+docker-compose up -d
+docker-compose down

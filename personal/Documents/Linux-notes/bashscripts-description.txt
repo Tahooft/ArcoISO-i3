@@ -1,0 +1,12 @@
+﻿Bashscripts description
+
+/usr/local/bin/
+
+makedb.sh - Creëer database voor Drupal
+Use: sudo  /path/to/makedb.sh [root password] [dbname]
+
+virtualhost.sh – Creëer virtualhost
+Use: sudo sh /path/to/virtualhost.sh [create | delete] [domain] [optional host_dir]
+
+zwebrechten.sh – zet de juiste rwx rechten voor ftp en apache
+Use: sudo  /path/to/zwebrechten.sh [domain]

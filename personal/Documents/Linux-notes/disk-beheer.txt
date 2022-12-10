@@ -1,0 +1,36 @@
+# info ext4 partities
+sudo dmesg | grep EXT4
+
+# Send disk to sleep 
+hdparm -Y /dev/sdx 
+    -Y Force  an  IDE drive to immediately enter the lowest power consumption sleep mode
+
+
+# hd info
+sudo hdparm -i /dev/sda
+
+## Install smarttools 
+# Enable smartctl
+sudo smartctl -s on /dev/sda
+
+# All info
+sudo smartctl -a /dev/sda
+
+
+The commands for the various tests are:
+    Short: sudo smartctl -t short /dev/sdX
+    Long: sudo smartctl -t long /dev/sdX
+    Conveyance: sudo smartctl -t conveyance /dev/sdX
+Results:
+    sudo smartctl -H /dev/sdX
+
+
+# Zap a drive
+gdisk /dev/sdx
+x   -> expert mode
+z   -> zap drive
+
+
+# SSD
+# Enable weekly trim of ssd
+systemctl enable fstrim.timer

@@ -1,0 +1,98 @@
+
+>  redirect stdout to a file 
+2> redirect stderr
+&> redirect both stdout and stderr
+
+/dev/null  a data sink, which discards any data redirected to it
+
+stdin  keyboard input
+<      file input
+
+cat > tikopslag.txt   	keyboard input naar file. Afsluiten met ctrl-d
+cat  tikopslag.txt		toont file
+cat < tikopslag.txt		toont file
+
+# set envirionment variable
+export VAR=abc    in .bashrc voor persistent
+
+ if you want to have the “SHELL” environment variable in a new variable named “MYSHELL”, you would write
+
+$ export MYSHELL=$(echo $SHELL)
+
+$1  $2      input parameters
+$#          # parameters
+$*          alle parameters
+
+for i in 1 2 3; do
+    echo $i
+done
+
+for i in $( cat bestand.txt ); do
+    echo -n $i | wc -c;
+done
+
+
+counter=0
+while [ $counter -lt 3 ]; do
+    let counter+=1
+    echo counter
+done
+
+
+counter=6
+until [ $counter -lt 3 ]; do
+    let counter-=1
+    echo $counter
+done
+
+
+a=$(( 12 + 5))
+echo $a
+
+expr 12 + 5   
+expr 12 \* 5      # de * moet escaped
+
+let a=12+5
+echo $a
+
+# voor decimalen e bc command --- uitzoeken wanneer nodig
+
+
+# De lopende pid, pgid, cmd geselecteerd met -o
+ps -a -o pid,pgid,cmd
+
+als pid == pgid -> process grooup leader
+
+# https://linuxize.com/post/kill-command-in-linux/
+pidof firefox   geeft de pid(s) van proces firefox
+
+&       start een process in the background
+bg      stuur een lopend process naaar the background
+fg
+
+printenv        list all env variables
+printenv MAIL   MAIL variable
+
+## ENVIRIONMENT
+# Set a temporary environment variable
+MY_SITE='linuxconfig.org'
+export MY_SITE
+
+Alternatively:
+export MY_SITE="linuxconfig.org"
+
+# Permanent maken
+Voeg de export line aan .bashrc of /etc/profile toe.
+Voor /etc/envirionment laat je 'export' weg
+source ./bashrc   to load the changes
+
+export PATH="/bin/myscripts:$PATH"
+
+
+bash -x ./script        start script with verbose output
+
+
+
+
+
+

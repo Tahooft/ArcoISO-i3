@@ -1,0 +1,97 @@
+In BASH
+Ctrl + A 	Go to the beginning of the selected line.
+Ctrl + E 	Go to the end of the selected line.
+Ctrl + K 	Cut the part of the selected line after the cursor and copy it to the clipboard.
+Arrow Up 	Previously used command.
+Alt + B 	Move the cursor back one word.
+Alt + F 	Move the cursor forward one word.
+Ctrl + L 	Clean the current screen.
+Ctrl + J 	Enter the Newline control character.
+Ctrl + R 	Search in your Bash history.
+Ctrl + G 	Exit the history searching mode.
+
+cd -		goto previous dir
+
+ctrl-z		push running process to background
+fg 			background proces to foreground again
+
+!120 after the command: HISTORY you can exec command by linenumber
+
+command | column -t		show output in columns
+
+# Reset desktop/GUI
+CTRL+ALT+F4 of CTRL+ALT+BACKSPACE
+
+# set envirionment variable
+export VAR=abc
+
+source .bashrc    reload environment
+
+# List used ports
+sudo netstat -tulanp
+
+disown      als je de terminal wilt sluiten maar het proces moet doorhgaan
+disown %1   als meerdere jobs lopen 
+
+
+# Motherboard check
+sudo dmidecode |grep -B 2 Stat
+
+# Directory sizes sorted on size
+du -ks * | sort -nr | more
+
+# Cleanup some /var/cache
+sudo pacman -Sc
+
+xprop   ->  window properties 
+
+# Wireless
+Wireless driver in AUR: zd1211-firmware
+zd1211-firmware
+sudo ip link set wlp4s0u2 up
+
+# systemctl
+na opstart de systemd log: sudo systemctl status systemd-modules-load.service
+
+sudo systemctl status
+sudo systemd-analyze
+sudo systemd-analyze blame
+sudo systemctl list-unit-files
+
+at -f /bash.sh 14:45     start eenmalig een taak op bepaalde tijd
+df    free diskspace - shows all disks
+free -m   free memory  flag -m for megabytes
+
+
+ctl alt t   open terminal
+ctl shift w close terminal
+ctl l       clear terminal
+
+ls -lR dir/ list recursively
+
+id  id's and groups
+
+whatis ...
+
+dstat	disk statsb
+
+ip route
+ip addr
+netstat -r
+
+netconfig
+iwconfig ?
+
+netdiscover installeren?
+
+services vs processes - after kill service will automaticaly restart
+ps -et	all processes with their pid
+kill #pid   
+
+nmap -d   disk io
+
+cat /etc/shells   list shells
+chsh              change default shell
+
+# Overzicht van alle devices 
+duf

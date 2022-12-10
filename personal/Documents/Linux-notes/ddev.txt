@@ -1,0 +1,62 @@
+## install ddev-bin from arch repo
+
+## install mkcert from arch repo
+mkcert -install
+
+## Setup web-envirionment
+# Replace my-site-name!
+export SITE_NAME=my-site-name
+mkdir $SITE_NAME
+cd $SITE_NAME
+ddev config --docroot web --project-name $SITE_NAME --project-type drupal9 --create-docroot
+
+# This will create a new DDEV project configured to host a Drupal application. DDEV will store the generated configuration in a new .ddev subdirectory.
+
+## Next, start the DDEV container
+ddev start
+
+# You now have a web server and database server configured and running. Configuring DDEV first allows us to run Composer from within DDEV instead of installing it locally.
+
+## Create a new Drupal application
+Next, use Composer to install Drupal, which enables you to install and update dependencies (modules, themes, profiles, libraries, etc.) also with Composer. It is best practice to ensure that your entire Drupal application is managed with Composer in order to facilitate manageable upgrades.
+
+ddev composer create "drupal/recommended-project"
+ddev composer require drush/drush
+
+# Next, you must install Drupal using Drush, which populates your Drupal application’s new database.
+
+ddev drush site:install --account-name=admin --account-pass=aaaa
+
+# Drupal is now installed.
+
+# Log In
+ddev launch
+# 
+# If necessary, execute ddev describe to view the URL of your site. Copy and paste that URL into your web browser to visit it.
+
+
+Using the ddev Command
+Type ddev or ddev -h in a terminal window to see the available DDEV commands. There are commands to configure a project, start, stop, describe, etc. Each command also has help using ddev help <command> or ddev command -h. For example, ddev help snapshot will show help and examples for the snapshot command.
+
+ddev config configures a project’s type and docroot.
+ddev start starts up a project.
+ddev launch opens a web browser showing the project.
+ddev list shows current projects and their state.
+ddev describe gives all the info about the current project.
+ddev ssh takes you into the web container.
+ddev exec <command> executes a command inside the web container.
+ddev stop stops a project and removes its memory usage (but does not throw away any data).
+ddev poweroff stops all resources that DDEV is using and stops the Mutagen daemon if it’s running.
+ddev delete destroys the database and DDEV’s knowledge of the project without touching to your code.
+Lots of Other Commands¶
+ddev mysql gives direct access to the MySQL client and ddev psql to the PostgreSQL psql client.
+ddev sequelpro, ddev sequelace, and ddev tableplus (macOS only, if the app is installed) give access to the Sequel Pro, Sequel Ace, or TablePlus database browser GUIs.
+ddev heidisql (Windows/WSL2 only, if installed) gives access to the HeidiSQL database browser GUI.
+ddev import-db and ddev export-db import or export SQL or compressed SQL files.
+ddev composer runs Composer inside the container. For example, ddev composer install will do a full composer install for you without even needing Composer on your computer. See developer tools.
+ddev snapshot makes a very fast snapshot of your database that can be easily and quickly restored with ddev snapshot restore.
+ddev share requires ngrok and at least a free account on ngrok.com so you can let someone in the next office or on the other side of the planet see your project and what you’re working on. ddev share -h gives more info about how to set up ngrok.
+ddev xdebug enables Xdebug, ddev xdebug off disables it, and ddev xdebug status shows status.
+ddev xhprof enables xhprof, ddev xhprof off disables it, and ddev xhprof status shows status.
+ddev drush (Drupal and Backdrop only) gives direct access to the drush CLI.
+
