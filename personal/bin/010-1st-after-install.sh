@@ -30,6 +30,7 @@ echo "####             DOING THE PERSONAL STUF                    ###"
 echo "################################################################"
 cp ~/bin/i3/config ~/.config/i3/config
 cp ~/bin/i3/conky-i3statusbar ~/.config/i3/conky-i3statusbar
+cp ~/bin/autostart/xfce4-clipman-plugin-autostart.desktop ~/.config/autostart/xfce4-clipman-plugin-autostart.desktop
 
 echo "################################################################"
 echo "###################    PERSONAL STUF DONE #####################"
@@ -113,4 +114,6 @@ echo "   - SAMBA installeren"
 echo "Maybe..."
 echo "   - shortwave"
 echo "   - megasync (aur)"
+echo "Have a look at..."
+echo "   - AppArmor"
 echo "################################################################"
