@@ -1,0 +1,40 @@
+# /etc/fstab: static file system information.
+#
+# Use 'blkid' to print the universally unique identifier for a device; this may
+# be used with UUID= as a more robust way to name devices that works even if
+# disks are added and removed. See fstab(5).
+#
+# <file system>             <mount point>  <type>  <options>  <dump>  <pass>
+UUID=F48E-8B82                            /boot/efi      	vfat    umask=0077 0 2
+UUID=f088d091-185f-4b7c-84cb-360da509f82a /              	ext4    defaults,noatime 0 1
+UUID=2cf3f5db-ad80-4622-bca4-13d49abacf9a /home/th/Videos   ext4    defaults,noatime 0 2
+UUID=e9f71892-c9ba-4163-a84d-8f145287b182 /var           	ext4    defaults,noatime 0 2
+UUID=948a3246-213a-42e9-be72-4fc25769bbd8 /home          	ext4    defaults,noatime 0 2
+UUID=13f55d98-a82e-441e-960e-51faf09ecc0e  swap				swap	defaults,noatime 0 0
+
+
+Partition table: gpt
+/dev/nvme0n1p1	fat32		/boot/efi		300MB		boot,esp	1MB used
+/dev/nvme0n1p2	ext4		/				50GB					15GB used
+/dev/nvme0n1p3	ext4		/home/th/Videos	190GB					90GB used  label:data
+
+Partition table: gpt
+/dev/sda1		linux-swap					8,8GB		swap		Name:Swap
+/dev/sda2		ext4		/var			29GB					16GB used
+/dev/sda3		ext4		/home			894GB					550GB used  Label:Home
+
+
+
+Nieuwe opzet:
+/dev/nvme0n1=238GB
+/dev/sda=931GB
+
+Partition table: gpt
+/dev/nvme0n1p1	fat32		/boot/efi		300MB		boot,esp	1MB used
+/dev/nvme0n1p2	linux-swap					8GB			swap		Name: Swap
+/dev/nvme0n1p3	ext4		/				80GB					
+/dev/nvme0n1p4	ext4		/home/th/Videos	*GB					    label:Videos
+
+Partition table: gpt
+/dev/sda1		ext4		/home			*GB						Label:Home
+

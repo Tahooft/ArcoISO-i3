@@ -111,7 +111,6 @@ rxvt-unicode-terminfo
 screen
 sdparm
 sg3_utils
-smartmontools
 sof-firmware
 squashfs-tools
 sudo
@@ -960,3 +959,4 @@ qemu-guest-agent
 ###########################################################################
 
 #gnome-boxes
+#phoronix-test-suite (voor https://openbenchmarking.org/s)
