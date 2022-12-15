@@ -10,6 +10,8 @@ arch-install-scripts
 #archinstall
 #b43-fwcutter
 base
+# 221215 - hoe zit dit?
+#base-devel
 bind
 #brltty
 broadcom-wl-dkms
@@ -54,6 +56,7 @@ irssi
 #iwd
 jfsutils
 #kitty-terminfo
+laptop-detect
 less
 #lftp
 libfido2
@@ -174,10 +177,6 @@ mesa
 #nvidia-settings
 mesa-utils
 
-###base and base-devel
-base
-base-devel
-
 ###virtual box or vmware
 # virtualbox-guest-utils
 
@@ -203,6 +202,7 @@ libdvdcss
 ### 221202 - pulseaudio kan weg, wordt Pipewire en Alsa
 #pulseaudio
 #pulseaudio-alsa
+#pulseaudio-equalizer
 pavucontrol
 
 ###bluetooth
@@ -926,37 +926,19 @@ autorandr
 ###########################################################################
 #                                ADDED
 ###########################################################################
-hplip
-nm-connection-editor
-mkcert
-nomacs
-gpodder
-gnome-logs
-
-### 221127
-ranger
-qutebrowser
-
-### 221204
 arch-audit
-qjournalctl
 docker
 docker-compose
-visual-studio-code-bin
-
-### 221204
+gnome-logs
+gpodder
+hplip
+mkcert
+nm-connection-editor
+nomacs
+qjournalctl
+qutebrowser
+ranger
 stacer
-
-### 221202 - pulseaudio kan weg, wordt Pipewire en Alsa
-#pulseaudio-equalizer
+thermald
 ventoy-bin
-
-### Alleen voor in de virtual machine test !!!
-qemu-guest-agent
-
-###########################################################################
-#                                MAYBE
-###########################################################################
-
-#gnome-boxes
-#phoronix-test-suite (voor https://openbenchmarking.org/s)
+visual-studio-code-bin

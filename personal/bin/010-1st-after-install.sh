@@ -1,28 +1,37 @@
 #!/bin/bash
-# https://github.com/erikdubois/arcolinux-nemesis
-##################################################################################################################
-# Author 	: 	Erik Dubois
-# Website 	: 	https://www.erikdubois.be
-# Website	:	https://www.arcolinux.info
-# Website	:	https://www.arcolinux.com
-# Website	:	https://www.arcolinuxd.com
-# Website	:	https://www.arcolinuxforum.com
-##################################################################################################################
+# Based on: https://github.com/erikdubois/arcolinux-nemesis
+#
 # @ToDo
 # personal moet gedaan voordat dit script in ~/bin staat, misschien eerst testen of dat gebeurd is?
-
-
+set -e
+echo "################################################################"
+echo "####             SYSTEM DETECTION                            ###"
+echo "################################################################"
 set -e
 
-echo "################################################################"
-echo "####             SETTING RESOLUTION                          ###"
-echo "################################################################"
+shopt -s nocasematch
 
-xrandr --output Virtual-1 --mode 1920x1080 --auto
+case $(systemd-detect-virt) in
 
-echo "################################################################"
-echo "###################    RESOLUTION SET    ######################"
-echo "################################################################"
+  none)
+    echo "Physical Hardware"
+    ;;
+
+  *)
+    echo "Virtual Machine -> installing qemu-guest-agent"
+    pacman -S qemu-guest-agent
+    echo "Setting video resoltion for this VM"
+    xrandr --output Virtual-1 --mode 1920x1080 --auto
+    ;;
+esac
+
+# Laptop detection
+if [ -d "/proc/acpi/button/lid" ]; then
+    echo "computer is a laptop -> installing and enabling TLP for battery-savings"
+    pacman -S tlp
+    systemclt enable tlp.service
+    systemctl start tlp.service
+fi
 
 
 echo "################################################################"
@@ -34,6 +43,17 @@ cp ~/bin/autostart/xfce4-clipman-plugin-autostart.desktop ~/.config/autostart/xf
 
 echo "################################################################"
 echo "###################    PERSONAL STUF DONE #####################"
+echo "################################################################"
+
+echo "################################################################"
+echo "####             Enable THERMALD                             ###"
+echo "################################################################"
+ 
+systemctl enable thermald
+systemctl start thermald
+
+echo "################################################################"
+echo "###################    THERMALD enabled   ######################"
 echo "################################################################"
 
 

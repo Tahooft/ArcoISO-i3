@@ -32,7 +32,7 @@ Nieuwe opzet:
 Partition table: gpt
 /dev/nvme0n1p1	fat32		/boot/efi		300MB		boot,esp	1MB used
 /dev/nvme0n1p2	linux-swap					8GB			swap		Name: Swap
-/dev/nvme0n1p3	ext4		/				80GB					
+/dev/nvme0n1p3	ext4		/				70GB					
 /dev/nvme0n1p4	ext4		/home/th/Videos	*GB					    label:Videos
 
 Partition table: gpt
