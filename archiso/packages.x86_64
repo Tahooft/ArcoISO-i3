@@ -935,7 +935,6 @@ hplip
 mkcert
 nm-connection-editor
 nomacs
-pkgstats
 qjournalctl
 qutebrowser
 ranger
