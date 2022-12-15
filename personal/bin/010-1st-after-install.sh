@@ -37,15 +37,15 @@ fi
 echo "################################################################"
 echo "####             PERSONAL i3 STUF                            ###"
 echo "################################################################"
-rm -r ~/.config/i3/config/*
-cp ~/bin/i3/config/* ~/.config/i3/config/
-chmod +x ~/.config/i3/010-1st-after-install.sh
-chmod +x ~/.config/i3/020-2nd-after-install.sh
+rm -R ~/.config/i3//*
+cp -r ~/bin/i3/* ~/.config/i3/
+chmod +x ~/.config/i3/start-conky-i3statusbar.sh
 cp ~/bin/autostart/xfce4-clipman-plugin-autostart.desktop ~/.config/autostart/xfce4-clipman-plugin-autostart.desktop
 
 echo "################################################################"
 echo "###################    PERSONAL STUF DONE #####################"
 echo "################################################################"
+
 
 echo "################################################################"
 echo "####             Enable THERMALD                             ###"
