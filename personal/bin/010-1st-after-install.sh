@@ -39,6 +39,10 @@ echo "####             DOING THE PERSONAL STUF                    ###"
 echo "################################################################"
 cp ~/bin/i3/config ~/.config/i3/config
 cp ~/bin/i3/conky-i3statusbar ~/.config/i3/conky-i3statusbar
+cp ~/bin/i3/010-1st-after-install.sh ~/.config/i3/010-1st-after-install.sh
+chmod +x ~/.config/i3/010-1st-after-install.sh
+cp ~/bin/i3/020-2nd-after-install.sh ~/.config/i3/020-2nd-after-install.sh
+chmod +x ~/.config/i3/020-2nd-after-install.sh
 cp ~/bin/autostart/xfce4-clipman-plugin-autostart.desktop ~/.config/autostart/xfce4-clipman-plugin-autostart.desktop
 
 echo "################################################################"
