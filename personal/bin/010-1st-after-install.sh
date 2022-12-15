@@ -19,7 +19,7 @@ case $(systemd-detect-virt) in
 
   *)
     echo "Virtual Machine -> installing qemu-guest-agent"
-    pacman -S qemu-guest-agent
+    sudo pacman -S qemu-guest-agent
     echo "Setting video resoltion for this VM"
     xrandr --output Virtual-1 --mode 1920x1080 --auto
     ;;
@@ -28,9 +28,9 @@ esac
 # Laptop detection
 if [ -d "/proc/acpi/button/lid" ]; then
     echo "computer is a laptop -> installing and enabling TLP for battery-savings"
-    pacman -S tlp
-    systemclt enable tlp.service
-    systemctl start tlp.service
+    sudo pacman -S tlp
+    sudo systemclt enable tlp.service
+    sudo systemctl start tlp.service
 fi
 
 
