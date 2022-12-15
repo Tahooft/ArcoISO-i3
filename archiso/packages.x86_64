@@ -938,6 +938,7 @@ nomacs
 qjournalctl
 qutebrowser
 ranger
+seahorse
 stacer
 thermald
 ventoy-bin
